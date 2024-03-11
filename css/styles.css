@@ -938,6 +938,15 @@
             color: #404bbf;
         }
         /* sign-up form */
+        /*   .backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(46, 47, 66, 0.4);
+            transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        }*/
         
         .backdrop {
             position: fixed;
@@ -951,6 +960,11 @@
             visibility: hidden;
             transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
+        /*   .backdrop.is-hidden {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }*/
         
         .backdrop.is-open {
             opacity: 1;
@@ -961,14 +975,27 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translateX(-50%) translateY(-50%) scale(1);
+            transform: translateX(-50%) translateY(-50%);
             width: 408px;
             min-height: 584px;
-            background-color: #fcfcfc;
-            box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 2px 1px 0 rgba(0, 0, 0, 0.2);
             border-radius: 4px;
+            box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2), 0px 1px 3px 0px rgba(0, 0, 0, 0.12), 0px 1px 1px 0px rgba(0, 0, 0, 0.14);
+            background-color: #fcfcfc;
             transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
             padding: 72px 24px 24px 24px;
+        }
+        
+        @media screen and (max-width: 427px) {
+            .addition {
+                max-width: 320px;
+                overflow-y: scroll;
+            }
+        }
+        
+        @media screen and (min-width: 768px) {
+            .addition {
+                max-width: 408px;
+            }
         }
         
         .addition-button-close {
@@ -988,16 +1015,20 @@
             transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .addition-icon-close {
-            /*fill: #2e2f42;*/
-            transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
         .addition-button-close:hover,
         .addition-button-close:focus {
             background-color: #404bbf;
             border: none;
             fill: #ffffff;
+        }
+        /*  .addition-button-close:hover .addition-icon-close,
+        .addition-button-close:focus .addition-icon-close {
+            fill: #ffffff;
+        }*/
+        
+        .addition-icon-close {
+            fill: #2e2f42;
+            transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .addition-title {
@@ -1008,7 +1039,7 @@
             letter-spacing: 0.02em;
             color: #2e2f42;
             margin-bottom: 16px;
-            /*display: block;*/
+            display: block;
         }
         
         .addition-wrapper {
@@ -1031,6 +1062,7 @@
         .addition-input {
             width: 100%;
             height: 40px;
+            flex-shrink: 0;
             border: 1px solid rgba(46, 47, 66, 0.4);
             border-radius: 4px;
             background-color: transparent;
@@ -1062,7 +1094,8 @@
         
         .addition-text-field {
             width: 100%;
-            height: 120px;
+            font-weight: 400;
+            min-height: 120px;
             font-size: 12px;
             line-height: 1.17;
             letter-spacing: 0.04em;
@@ -1071,22 +1104,26 @@
             border-radius: 4px;
             background-color: transparent;
             padding: 8px 16px;
+            flex-shrink: 0;
             outline: transparent;
             resize: none;
             transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .Text_input {
+        /*  .Text_input {
             font-family: "Roboto", sans-serif;
             font-weight: 400;
             font-size: 12px;
             line-height: 1.16667;
             letter-spacing: 0.04em;
             color: rgba(46, 47, 66, 0.4);
-        }
+        }*/
         
         .addition-text-field:focus {
             border-color: #4D5AE5;
+        }
+        
+        .addition-text-field::placeholder {
+            color: rgba(46, 47, 66, 0.4);
         }
         
         .addition-check-wrapper {
@@ -1098,6 +1135,7 @@
             font-size: 12px;
             line-height: 1.17;
             letter-spacing: 0.04em;
+            cursor: pointer;
         }
         
         .addition-check-box {
@@ -1111,6 +1149,7 @@
             justify-content: center;
             fill: transparent;
             margin-right: 8px;
+            cursor: pointer;
         }
         
         .addition-check-input:checked+.addition-check-text .addition-check-box {
@@ -1119,8 +1158,15 @@
             fill: #F4F4FD;
         }
         
+        .addition-check-input:focus+.addition-check-text .addition-check-box {
+            border-color: #404bbf;
+        }
+        
         .addition-link-text {
             color: #4D5AE5;
+            margin-left: 4px;
+            text-decoration: underline;
+            transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .addition-link-text:hover,
@@ -1144,6 +1190,9 @@
             transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
             margin: 0 auto;
             border-radius: 4px;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+            padding: 16px 32px;
+            text-align: center;
         }
         
         .addition-button-submit:hover,
