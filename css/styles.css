@@ -1224,7 +1224,7 @@
             top: 0;
             left: 0;
             width: 100vw;
-            height: calc(100vw*2);
+            height: 100vh;
             background-color: #fff;
             z-index: 999;
             transform: translateX(100%);
